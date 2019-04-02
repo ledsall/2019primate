@@ -1,0 +1,122 @@
+# ################################################################################################################################################################################################################
+# GO.step80.create_bigBed_files
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# DHS sites
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.passed_coverage_filter.zero_filtered.bed	all_DHS_sites.bb
+
+source GO.create_bigBed_file	human_DHS_sites.bed		human_DHS_sites.bb
+source GO.create_bigBed_file	chimp_DHS_sites.bed		chimp_DHS_sites.bb
+source GO.create_bigBed_file	gorilla_DHS_sites.bed		gorilla_DHS_sites.bb
+source GO.create_bigBed_file	orangutan_DHS_sites.bed		orangutan_DHS_sites.bb
+source GO.create_bigBed_file	macaque_DHS_sites.bed		macaque_DHS_sites.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# All differential; all non-significant
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.differential_sites.locations.bed	DHS_sites.differential.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.not_significant_sites.locations.bed	DHS_sites.not_significantly_differential.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.Gsss.locations.bed	DHS_sites.Gsss.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.Lsss.locations.bed	DHS_sites.Lsss.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Chimp
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sGss.locations.bed	DHS_sites.sGss.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sLss.locations.bed	DHS_sites.sLss.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Gorilla
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.ssGs.locations.bed	DHS_sites.ssGs.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.ssLs.locations.bed	DHS_sites.ssLs.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sssG.locations.bed	DHS_sites.sssG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sssL.locations.bed	DHS_sites.sssL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# HCGO
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GGGG.locations.bed	DHS_sites.GGGG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LLLL.locations.bed	DHS_sites.LLLL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and chimp
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GGss.locations.bed	DHS_sites.GGss.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LLss.locations.bed	DHS_sites.LLss.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and gorilla
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GsGs.locations.bed	DHS_sites.GsGs.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LsLs.locations.bed	DHS_sites.LsLs.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GssG.locations.bed	DHS_sites.GssG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LssL.locations.bed	DHS_sites.LssL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Chimp and gorilla
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sGGs.locations.bed	DHS_sites.sGGs.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sLLs.locations.bed	DHS_sites.sLLs.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Chimp and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sGsG.locations.bed	DHS_sites.sGsG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sLsL.locations.bed	DHS_sites.sLsL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Gorilla and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.ssGG.locations.bed	DHS_sites.ssGG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.ssLL.locations.bed	DHS_sites.ssLL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and chimp and gorilla
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GGGs.locations.bed	DHS_sites.GGGs.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LLLs.locations.bed	DHS_sites.LLLs.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and chimp and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GGsG.locations.bed	DHS_sites.GGsG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LLsL.locations.bed	DHS_sites.LLsL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Human and gorilla and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.GsGG.locations.bed	DHS_sites.GsGG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.LsLL.locations.bed	DHS_sites.LsLL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Chimp and gorilla and orangutan
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sGGG.locations.bed	DHS_sites.sGGG.bb
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.sLLL.locations.bed	DHS_sites.sLLL.bb
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Other
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+source GO.create_bigBed_file	all_DHS_sites.glm_analysis.OOOO.locations.bed	DHS_sites.OOOO.bb

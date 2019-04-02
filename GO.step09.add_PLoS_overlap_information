@@ -1,0 +1,99 @@
+# ################################################################################################################################################################################################################
+# GO.step09.add_PLoS_overlap_information
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+echo ""
+echo "==============================================================================================================================================="
+echo "STARTED"
+date
+echo "==============================================================================================================================================="
+echo ""
+
+echo ""
+echo "==============================================================================================================================================="
+echo "Add PLoS overlap information to score file"
+echo "==============================================================================================================================================="
+echo ""
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Create file containing regions that overlap with PLoS gains & losses
+#	Note: removes extra overlap for two of my regions that were previously identified and checked in the browser
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo "Creating file containing regions that overlap with PLoS gains & losses"
+
+bedtools intersect -wa -wb -names HumanGain HumanLoss ChimpGain ChimpLoss -a all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt \
+-b HumanUpFibroblast.final.bed HumanDownFibroblast.final.bed ChimpUpFibroblast.final.bed ChimpDownFibroblast.final.bed \
+| cut -f1-19 | grep -E -v "27797572.*HumanLoss" | grep -E -v "51355538.*HumanLoss" \
+| sort -k1,1 -k2,2n >! all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_gains_and_losses
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Create file containing regions that overlap with PLoS common sites
+#	Note: The file does not contain any regions that overlap a common site AND a gain or loss
+#	Note: because there is only one -b file, bedtools doesn't insert the name, so it needs to be added using the awk command
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo "Creating file containing regions that overlap with PLoS common sites"
+
+bedtools intersect -v -a all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt \
+-b HumanUpFibroblast.final.bed HumanDownFibroblast.final.bed ChimpUpFibroblast.final.bed ChimpDownFibroblast.final.bed \
+| bedtools intersect -u -a stdin -b CommonFibroblast.final.bed \
+| awk '{print $0, "\tCommon"}' \
+| sort -k1,1 -k2,2n >! all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_common
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Create file containing regions that don't overlap any PLoS sites
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo "Creating file containing regions that don't overlap any PLoS sites"
+
+bedtools intersect -v -a all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt \
+-b HumanUpFibroblast.final.bed HumanDownFibroblast.final.bed ChimpUpFibroblast.final.bed ChimpDownFibroblast.final.bed CommonFibroblast.final.bed \
+| awk '{print $0, "\tNone"}' \
+| sort -k1,1 -k2,2n >! all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_none
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Create final file
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating final file"
+
+cat all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_gains_and_losses \
+all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_common \
+all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS_none \
+| sort -k1,1 -k2,2n >! all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.with_PLoS_overlap_information
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Print line counts
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo ""
+echo "Line count for input file"
+wc -l all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt
+
+echo ""
+echo "Line counts for individual files"
+wc -l all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.overlap_PLoS*
+
+echo ""
+echo "Line count for final file"
+wc -l all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.with_PLoS_overlap_information
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Finish up
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo ""
+echo "==============================================================================================================================================="
+echo "FINISHED"
+date
+echo "==============================================================================================================================================="
+echo ""
+
+
+

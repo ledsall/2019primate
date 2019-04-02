@@ -1,0 +1,133 @@
+# ################################################################################################################################################################################################################
+# GO.step02.create_union_set_of_2_or_more_peaks_for_each_species
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+
+echo ""
+echo "==============================================================================================================================================="
+echo "STARTED"
+date
+echo "==============================================================================================================================================="
+echo ""
+
+echo ""
+echo "==============================================================================================================================================="
+echo "Create per-species union sets of peaks. Peaks must be present in 2 or more replicates"
+echo "     Filter based on the ENCODE blacklist"
+echo "==============================================================================================================================================="
+echo ""
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# human
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating union set of peaks for human"
+
+bedtools intersect -wa -a human_b1t2_peaks.bed -b human_b2t1_peaks.bed human_b3t1_peaks.bed >! human_temp1.bed
+bedtools intersect -wa -a human_b2t1_peaks.bed -b human_b1t2_peaks.bed human_b3t1_peaks.bed >! human_temp2.bed
+bedtools intersect -wa -a human_b3t1_peaks.bed -b human_b1t2_peaks.bed human_b2t1_peaks.bed >! human_temp3.bed
+
+cat human_temp1.bed human_temp2.bed human_temp3.bed \
+| cut -f1-3 \
+| bedtools intersect -v -a stdin -b ~/reference_files/blacklists/ENCODE_blacklist.bed \
+| sort -k1,1 -k2,2n \
+| bedtools merge -i stdin \
+>! human_DHS_sites.bed
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# chimp
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating union set of peaks for chimp"
+
+bedtools intersect -wa -a chimp_b1t2_peaks.bed -b chimp_b2t2_peaks.bed chimp_b3t1_peaks.bed >! chimp_temp1.bed
+bedtools intersect -wa -a chimp_b2t2_peaks.bed -b chimp_b1t2_peaks.bed chimp_b3t1_peaks.bed >! chimp_temp2.bed
+bedtools intersect -wa -a chimp_b3t1_peaks.bed -b chimp_b1t2_peaks.bed chimp_b2t2_peaks.bed >! chimp_temp3.bed
+
+cat chimp_temp1.bed chimp_temp2.bed chimp_temp3.bed \
+| cut -f1-3 \
+| bedtools intersect -v -a stdin -b ~/reference_files/blacklists/ENCODE_blacklist.bed \
+| sort -k1,1 -k2,2n \
+| bedtools merge -i stdin \
+>! chimp_DHS_sites.bed
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# gorilla
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating union set of peaks for gorilla"
+
+bedtools intersect -wa -a gorilla_b1t1_peaks.bed -b gorilla_b2t1_peaks.bed gorilla_b3t1_peaks.bed >! gorilla_temp1.bed
+bedtools intersect -wa -a gorilla_b2t1_peaks.bed -b gorilla_b1t1_peaks.bed gorilla_b3t1_peaks.bed >! gorilla_temp2.bed
+bedtools intersect -wa -a gorilla_b3t1_peaks.bed -b gorilla_b1t1_peaks.bed gorilla_b2t1_peaks.bed >! gorilla_temp3.bed
+
+cat gorilla_temp1.bed gorilla_temp2.bed gorilla_temp3.bed \
+| cut -f1-3 \
+| bedtools intersect -v -a stdin -b ~/reference_files/blacklists/ENCODE_blacklist.bed \
+| sort -k1,1 -k2,2n \
+| bedtools merge -i stdin \
+>! gorilla_DHS_sites.bed
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# orangutan
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating union set of peaks for orangutan"
+
+bedtools intersect -wa -a orangutan_b1t1_peaks.bed -b orangutan_b2t1_peaks.bed orangutan_b3t1_peaks.bed >! orangutan_temp1.bed
+bedtools intersect -wa -a orangutan_b2t1_peaks.bed -b orangutan_b1t1_peaks.bed orangutan_b3t1_peaks.bed >! orangutan_temp2.bed
+bedtools intersect -wa -a orangutan_b3t1_peaks.bed -b orangutan_b1t1_peaks.bed orangutan_b2t1_peaks.bed >! orangutan_temp3.bed
+
+cat orangutan_temp1.bed orangutan_temp2.bed orangutan_temp3.bed \
+| cut -f1-3 \
+| bedtools intersect -v -a stdin -b ~/reference_files/blacklists/ENCODE_blacklist.bed \
+| sort -k1,1 -k2,2n \
+| bedtools merge -i stdin \
+>! orangutan_DHS_sites.bed
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# macaque
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+echo "Creating union set of peaks for macaque"
+
+bedtools intersect -wa -a macaque_b1ta_peaks.bed -b macaque_b2ta_peaks.bed macaque_b3t1_peaks.bed >! macaque_temp1.bed
+bedtools intersect -wa -a macaque_b2ta_peaks.bed -b macaque_b1ta_peaks.bed macaque_b3t1_peaks.bed >! macaque_temp2.bed
+bedtools intersect -wa -a macaque_b3t1_peaks.bed -b macaque_b1ta_peaks.bed macaque_b2ta_peaks.bed >! macaque_temp3.bed
+
+cat macaque_temp1.bed macaque_temp2.bed macaque_temp3.bed \
+| cut -f1-3 \
+| bedtools intersect -v -a stdin -b ~/reference_files/blacklists/ENCODE_blacklist.bed \
+| sort -k1,1 -k2,2n \
+| bedtools merge -i stdin \
+>! macaque_DHS_sites.bed
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+# Print counts and file names
+# ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+echo ""
+echo "DHS site counts"
+wc -l human_DHS_sites.bed
+wc -l chimp_DHS_sites.bed
+wc -l gorilla_DHS_sites.bed
+wc -l orangutan_DHS_sites.bed
+wc -l macaque_DHS_sites.bed
+
+echo ""
+echo "Output is located in"
+echo "     human_DHS_sites.bed"
+echo "     chimp_DHS_sites.bed"
+echo "     gorilla_DHS_sites.bed"
+echo "     orangutan_DHS_sites.bed"
+echo "     macaque_DHS_sites.bed"
+
+
+echo ""
+echo "==============================================================================================================================================="
+echo "FINISHED"
+date
+echo "==============================================================================================================================================="
+echo ""
+

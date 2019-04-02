@@ -1,0 +1,70 @@
+# ################################################################################################################################################################################################################
+# GO.step01.create_symlinks
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+echo ""
+echo "==============================================================================================================================================="
+echo "STARTED"
+date
+echo "==============================================================================================================================================="
+echo ""
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/bed_files_from_mapping_to_native_genome/human_b1t2.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/bed_files_from_mapping_to_native_genome/human_b2t1.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/bed_files_from_mapping_to_native_genome/human_b3t1.hg19.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/chimp_b1t2.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/chimp_b2t2.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/chimp_b3t1.hg19.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/gorilla_b1t1.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/gorilla_b2t1.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/gorilla_b3t1.hg19.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/orangutan_b1t1.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/orangutan_b2t1.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/orangutan_b3t1.hg19.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/macaque_b1ta.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/macaque_b2ta.hg19.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_liftOver_files/macaque_b3t1.hg19.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/human_b1t2_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/human_b2t1_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/human_b3t1_peaks.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/chimp_b1t2_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/chimp_b2t2_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/chimp_b3t1_peaks.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/gorilla_b1t1_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/gorilla_b2t1_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/gorilla_b3t1_peaks.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/orangutan_b1t1_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/orangutan_b2t1_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/orangutan_b3t1_peaks.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/macaque_b1ta_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/macaque_b2ta_peaks.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/pipeline_version_4/final_peak_files/macaque_b3t1_peaks.bed
+
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/plos_paper/DNase/ChimpDownFibroblast.final.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/plos_paper/DNase/ChimpUpFibroblast.final.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/plos_paper/DNase/HumanDownFibroblast.final.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/plos_paper/DNase/HumanUpFibroblast.final.bed
+ln -s ~/Documents/duke/crawford_lab/evolutionary_comparison/plos_paper/DNase/CommonFibroblast.final.bed
+
+echo ""
+echo "==============================================================================================================================================="
+echo "FINISHED"
+date
+echo "==============================================================================================================================================="
+echo ""
+

@@ -1,0 +1,35 @@
+# ################################################################################################################################################################################################################
+# GO.step05.run_galaxy_coverage_tool.MANUAL
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Must be done manually
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 1: Upload the following files to Galaxy		( https://usegalaxy.org/ )
+	all_DHS_sites.before_coverage_filter.bed
+	all_DHS_sites.before_coverage_filter.maf
+
+Step 2: Run "MAF Coverage Stats" (located in the "Fetch Alignments / Sequences" section)
+	Interval File	all_DHS_sites.before_coverage_filter.bed
+	MAF Source	Alignments in Your History
+			all_DHS_sites.before_coverage_filter.maf
+	Type of Output	Coverage by Region
+	Save file as: all_DHS_sites.before_coverage_filter.galaxy_coverage_output.txt
+
+	Coverage file format
+		column 1: chromosome
+		column 2: start
+		column 3: end
+		column 4: genome
+		column 5: number of nucleotides
+		column 6: number of gaps
+
+

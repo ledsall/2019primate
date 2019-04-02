@@ -1,0 +1,37 @@
+# ################################################################################################################################################################################################################
+# GO.step08.run_zero_count_filter
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+# Input parameters to ~/bin/zero_count_filter_HCGOM_min_2_replicates.pl
+#	Parameter 1: name of input file
+#	Parameter 2: base name for output files
+
+echo ""
+echo "==============================================================================================================================================="
+echo "STARTED"
+date
+echo "==============================================================================================================================================="
+echo ""
+
+echo ""
+echo "==============================================================================================================================================="
+echo "Run zero-count filter"
+echo "==============================================================================================================================================="
+echo ""
+
+~/bin/zero_count_filter_HCGOM_min_2_replicates.pl all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.not_zero_count_filtered.txt all_DHS_sites.passed_coverage_filter.with_non_normalized_scores
+
+cut -f1-3 all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt | sort -k1,1 -k2,2n >! all_DHS_sites.passed_coverage_filter.zero_filtered.bed
+
+echo ""
+echo "==============================================================================================================================================="
+echo "FINISHED"
+date
+echo "==============================================================================================================================================="
+echo ""

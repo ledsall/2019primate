@@ -1,0 +1,17 @@
+# ################################################################################################################################################################################################################
+# GO.step10.run_glm.R
+#
+# CC-BY Lee Edsall
+#	email: le49@duke.edu
+#	Twitter: @LeeEdsall
+#
+# This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
+# ################################################################################################################################################################################################################
+
+
+# Parameter 1: name of input file
+# Parameter 2: name of output file
+
+echo "Creating bigBed named $2 from bed file named $1"
+~/bin/bedToBigBed $1 ~/reference_files/genome_sizes/hg19.chrom.sizes $2
+echo ""
