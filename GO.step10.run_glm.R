@@ -55,7 +55,7 @@ pvalue_threshold = .01
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Open the log file; write date and options
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-sink(file="glm_analysis.log", append=FALSE, type="output", split=TRUE)
+sink(file="GO.step10.run_glm.R", append=FALSE, type="output", split=TRUE)
 cat("-------------------------------------------------------------------------------------------------\n")
 cat("BEGIN:", date(), "\n")
 cat("-------------------------------------------------------------------------------------------------\n\n")
@@ -103,7 +103,7 @@ cat("\tp-value threshold:",  pvalue_threshold, "\n\n")
 
 cat("Reading score file (glm_analysis.input_file.txt) ... \n")
 
-scores_with_locations <- as.data.frame(read.table("glm_analysis.input_file.txt", sep="\t", header=FALSE))
+scores_with_locations <- as.data.frame(read.table("all_DHS_sites.passed_coverage_filter.with_non_normalized_scores.zero_filtered.txt.with_PLoS_overlap_information", sep="\t", header=FALSE))
 
 colnames(scores_with_locations) <- c("chrom","start","end", "h1", "h2", "h3", "c1", "c2", "c3", "g1", "g2", "g3", "o1", "o2", "o3", "m1", "m2", "m3", "PLoS_overlap")
 
