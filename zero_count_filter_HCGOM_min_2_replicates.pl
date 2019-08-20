@@ -6,6 +6,7 @@
 # CC-BY Lee Edsall
 #	email: edsall57@gmail.com
 #	Twitter: @LeeEdsall
+#	GitHub: https://github.com/ledsall
 #
 # This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
 #
