@@ -1,20 +1,17 @@
+#!/usr/bin/perl
+
 # ################################################################################################################################################################################################################
 # zero_count_filter_HCGOM_min_2_replicates.pl
 #
 # CC-BY Lee Edsall
-#	email: le49@duke.edu
+#	email: edsall57@gmail.com
 #	Twitter: @LeeEdsall
 #
 # This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
-# ################################################################################################################################################################################################################
-
-#!/usr/bin/perl
-# zero_count_filter_HCGOM_min_2_replicates.pl
-
-# =================================================================================================================================================================
+#
 # Remove entries from a text file that have a score of zero for 2 or 3 replicates in a species
 # Hard coded for 3 replicates per species in this order: human, chimp, gorilla, orangutan, macaque
-
+#
 # Columns are:
 #	column 1	chromosone
 #	column 2	start
@@ -34,15 +31,15 @@
 #	column 16	macaque b1ta
 #	column 17	macaque b2ta
 #	column 18	macaque b3t1
-
+#
 # print stats to STDOUT and produce 2 output files
 #	1. filtered text file (all non-zero entries)
 #	2. text file containing entries that were removed
-
+#
 # 2 input parameters
 #	1. input file
 #	2. base name for output files
-# =================================================================================================================================================================
+# ################################################################################################################################################################################################################
 
 use strict;
 use warnings;

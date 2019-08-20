@@ -1,24 +1,22 @@
+#!/usr/bin/perl
+
 # ################################################################################################################################################################################################################
 # filter_regions_based_on_conservation_coverage.pl
 #
 # CC-BY Lee Edsall
-#	email: le49@duke.edu
+#	email: edsall57@gmail.com
 #	Twitter: @LeeEdsall
 #
 # This script was used to analyze data for Edsall et al. 2019 which compared DNase-seq data from 5 primates (human, chimpanzee, gorilla, orangutan, macaque)
-# ################################################################################################################################################################################################################
-
-#!/usr/bin/perl
-# filter_regions_based_on_conservation_coverage.pl
-
+#
 # Remove regions that aren't conserved across the chimp, gorilla, orangutan, and macaque genomes
-
+#
 # Input parameters
 #	1. name of input Galaxy file
 #	2. coverage threshold (as decimal)
 #	3. name for output bed file
 #	4. name for output text file
-
+#
 # Galaxy file format
 #	column 1: chromosome
 #	column 2: start
@@ -26,10 +24,12 @@
 #	column 4: genome
 #	column 5: number of nucleotides
 #	column 6: number of gaps
-
+#
 # Output files
 #	1. bed file containing regions that passed the filter
 #	2. text file containing all of the regions and the coverage for each genome
+#
+# ################################################################################################################################################################################################################
 
 use strict;
 use warnings;
